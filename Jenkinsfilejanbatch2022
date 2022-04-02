@@ -8,6 +8,7 @@ node{
   properties([[$class: 'JobLocalConfiguration', changeReasonComment: ''], pipelineTriggers([pollSCM('* * * * *')])])
   //checkout stage
     stage('checkout'){
+    buildName 'Dev-${env.BUILD_NUMBER}'
     git branch: 'development', credentialsId: '0aedc6ca-9609-4826-88dc-fcfac2d2323d', url: 'https://github.com/mss-jan-batch-devops/maven-web-application.git'
     }
     //Build stage
