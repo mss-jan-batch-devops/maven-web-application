@@ -4,6 +4,7 @@ node{
     echo "The Job name is:  ${env.JOB_NAME}"
     echo "The Build number is:  ${env.BUILD_NUMBER}"
     
+   properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '5', daysToKeepStr: '', numToKeepStr: '5')), [$class: 'JobLocalConfiguration', changeReasonComment: '']]) 
     //checkout stage
     stage('checkout'){
     git branch: 'development', credentialsId: '0aedc6ca-9609-4826-88dc-fcfac2d2323d', url: 'https://github.com/mss-jan-batch-devops/maven-web-application.git'
