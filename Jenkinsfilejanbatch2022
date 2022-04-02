@@ -5,7 +5,8 @@ node{
     echo "The Build number is:  ${env.BUILD_NUMBER}"
     
    properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '5', daysToKeepStr: '', numToKeepStr: '5')), [$class: 'JobLocalConfiguration', changeReasonComment: '']]) 
-    //checkout stage
+  properties([[$class: 'JobLocalConfiguration', changeReasonComment: ''], pipelineTriggers([pollSCM('* * * * *')])])
+  //checkout stage
     stage('checkout'){
     git branch: 'development', credentialsId: '0aedc6ca-9609-4826-88dc-fcfac2d2323d', url: 'https://github.com/mss-jan-batch-devops/maven-web-application.git'
     }
