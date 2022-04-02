@@ -1,5 +1,9 @@
 node{
     def mavenHome = tool name: "maven3.8.4"
+    echo "The node name is: " ${NODE_NAME}
+    echo "The Job name is: " ${env.JOB_NAME}
+    echo "The Build number is: " ${env.BUILD_NUMBER}
+    
     //checkout stage
     stage('checkout'){
     git branch: 'development', credentialsId: '0aedc6ca-9609-4826-88dc-fcfac2d2323d', url: 'https://github.com/mss-jan-batch-devops/maven-web-application.git'
